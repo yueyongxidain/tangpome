@@ -1,0 +1,2 @@
+.i-grid-item-border{position:relative;float:left;padding:10rpx 10rpx;width:33.33333333%;box-sizing:border-box;border-right:1rpx solid #e9eaec;border-bottom:1rpx solid #e9eaec}
+.i-grid-item{position:relative;float:left;padding:0rpx 0rpx;width:33.33333333%;box-sizing:border-box;border:none;}

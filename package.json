@@ -1,0 +1,15 @@
+{
+  "name": "tangpome",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "weui-miniprogram": "^0.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "yueyong_quantdo <1397604589@qq.com> (https://www.npmjs.com/\\~yueyong_quantdo)",
+  "license": "ISC"
+}

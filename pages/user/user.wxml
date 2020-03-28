@@ -1,0 +1,24 @@
+<!--pages/user/user.wxml-->
+<view>
+  <view class="userinfo" wx:if='{{hasUserInfo}}'>
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+    <view class='userinfo-info'>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      <!-- <text class="userinfo-telphone">这里是手机号</text> -->
+    </view>
+  </view>
+  <view class="userinfo" wx:else>
+    <button open-type='getUserInfo' bindgetuserinfo="getUserInfo">快速登陆</button>
+  </view>
+  <i-cell-group i-class='user-i-cell'>
+    <i-cell title="消息" is-link url="/pages/photo/photo" fontSize='35'>
+      <i-icon type="xiangce" slot="icon" size='45' color='#A8D0C8' />
+    </i-cell>
+    <i-cell title="声音" is-link url="/pages/setting/setting" fontSize='35'>
+      <i-icon type="shezhi" slot="icon" size='45' color='#2BD49D' />
+    </i-cell>
+    <i-cell title="关于" is-link url="/pages/info/info" fontSize='35'>
+      <i-icon type="guanyuwomen" slot="icon" size='45' color='#3378EA' />
+    </i-cell>
+  </i-cell-group>
+</view>

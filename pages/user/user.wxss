@@ -1,0 +1,44 @@
+/* pages/user/user.wxss */
+
+.userinfo {
+  display: flex;
+  padding: 40rpx;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  background: #fff;
+  margin-bottom: 20rpx;
+}
+
+.userinfo-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  margin-right: 40rpx;
+  border-radius: 50%;
+  box-shadow: 4px 4px 10px #ccc;
+}
+
+.userinfo-nickname {
+  color: #000;
+  font-size: 40rpx;
+  font-weight: 500;
+}
+
+.userinfo-telphone {
+  color: #8a8a8a;
+  font-size: 35rpx;
+  font-weight: 500;
+}
+.user-i-cell{
+  color: #707070;
+}
+.quit{
+  margin-top: 40rpx !important;
+  font-size: 35rpx !important;
+}

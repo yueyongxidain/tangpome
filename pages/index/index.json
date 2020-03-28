@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "i-row": "/commpent/iview-weapp/row/index",
+    "i-col": "/commpent/iview-weapp/col/index",
+    "i-avatar": "/commpent/iview-weapp/avatar/index",
+    "i-card": "/commpent/iview-weapp/card/index"
+  }
+}

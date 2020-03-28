@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "tabbar": "/commpent/weui-miniprogram/tabbar/tabbar"
+  }
+}
