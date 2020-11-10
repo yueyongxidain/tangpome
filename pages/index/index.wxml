@@ -2,13 +2,16 @@
 <view>
   <swiper class="index-slide" circular='true' next-margin='135rpx' previous-margin='135rpx'>
     <swiper-item class="index-slide-item">
-      <image src="http://5b0988e595225.cdn.sohucs.com/images/20180823/624b37f7c9d648ee883726fe90561bda.jpeg" class="slide-image index-slide-item" mode="cover" />
+      <image src="http://5b0988e595225.cdn.sohucs.com/images/20180823/624b37f7c9d648ee883726fe90561bda.jpeg"
+        class="slide-image index-slide-item" mode="cover" />
     </swiper-item>
     <swiper-item>
-      <image src="http://5b0988e595225.cdn.sohucs.com/images/20180823/58e582b0a9814320bd799174e105ce8a.jpeg" class="slide-image index-slide-item" mode="cover" />
+      <image src="http://5b0988e595225.cdn.sohucs.com/images/20180823/58e582b0a9814320bd799174e105ce8a.jpeg"
+        class="slide-image index-slide-item" mode="cover" />
     </swiper-item>
     <swiper-item>
-      <image src="http://5b0988e595225.cdn.sohucs.com/images/20180823/226de97fec544fa1b2a375467297d3e6.jpeg" class="slide-image index-slide-item" mode="cover" />
+      <image src="http://5b0988e595225.cdn.sohucs.com/images/20180823/226de97fec544fa1b2a375467297d3e6.jpeg"
+        class="slide-image index-slide-item" mode="cover" />
     </swiper-item>
   </swiper>
   <view class="menu">
@@ -21,15 +24,19 @@
       <view class="menu-item-name">摇篮曲</view>
     </view>
     <view class="menu-item">
-      <image src="http://5b0988e595225.cdn.sohucs.com/images/20180823/624b37f7c9d648ee883726fe90561bda.jpeg" class="menu-item-image" mode="aspectFit" />
+      <image src="http://5b0988e595225.cdn.sohucs.com/images/20180823/624b37f7c9d648ee883726fe90561bda.jpeg"
+        class="menu-item-image" mode="aspectFit" />
       <view class="menu-item-name">讲故事</view>
     </view>
     <view class="menu-item">
-      <image src="http://5b0988e595225.cdn.sohucs.com/images/20180823/624b37f7c9d648ee883726fe90561bda.jpeg" class="menu-item-image" mode="aspectFit" />
+      <image src="http://5b0988e595225.cdn.sohucs.com/images/20180823/624b37f7c9d648ee883726fe90561bda.jpeg"
+        class="menu-item-image" mode="aspectFit" />
       <view class="menu-item-name">唐诗</view>
     </view>
   </view>
   <view class='module-title'>七日热读</view>
   <view>
   </view>
+  <!--loading-->
+  <i-toast id="toast" />
 </view>

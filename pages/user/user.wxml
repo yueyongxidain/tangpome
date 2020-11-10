@@ -8,7 +8,9 @@
     </view>
   </view>
   <view class="userinfo" wx:else>
-    <button open-type='getUserInfo' bindgetuserinfo="getUserInfo">快速登陆</button>
+    <!-- 需要使用 button 来授权登录 -->
+    <button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">授权登录</button>
+    <view wx:else>请升级微信版本</view>
   </view>
   <i-cell-group i-class='user-i-cell'>
     <i-cell title="消息" is-link url="/pages/photo/photo" fontSize='35'>
@@ -21,4 +23,6 @@
       <i-icon type="guanyuwomen" slot="icon" size='45' color='#3378EA' />
     </i-cell>
   </i-cell-group>
+  <!--loading-->
+  <i-toast id="toast" />
 </view>

@@ -1,6 +1,7 @@
 // pages/childrenSong/childrenSong.js
-Page({
 
+
+Page({
   /**
    * 页面的初始数据
    */
@@ -18,7 +19,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     // 加载数据
     const that = this
     wx.request({
@@ -41,7 +42,7 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
     this.setTimer()
     const that = this
     const manage = wx.getBackgroundAudioManager()
@@ -66,34 +67,33 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
-  },
+  onHide: function () {},
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
     clearInterval(this.data.timer)
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   },
 
   /**
    * 上一首
    */
-  bindTapPrev: function() {
+  bindTapPrev: function () {
     let length = this.data.audioList.length
     let audioIndexNow = this.data.audioIndex
     if (audioIndexNow === 0) {
@@ -119,7 +119,7 @@ Page({
   /**
    * 下一首
    */
-  bindTapNext: function() {
+  bindTapNext: function () {
     let length = this.data.audioList.length
     let audioIndexPrev = this.data.audioIndex
     let audioIndexNow = audioIndexPrev
@@ -142,7 +142,7 @@ Page({
     }, 500)
     wx.setStorageSync('audioIndex', audioIndexNow)
   },
-  bindTapPlay: function() {
+  bindTapPlay: function () {
     if (this.data.pauseStatus === true) {
       this.play()
       this.setData({
@@ -159,11 +159,11 @@ Page({
   /**
    * 滑块拖动
    */
-  bindSliderchange: function(e) {
+  bindSliderchange: function (e) {
     let value = e.detail.value
     let that = this
     wx.getBackgroundAudioPlayerState({
-      success: function(res) {
+      success: function (res) {
         let {
           status,
           duration
@@ -202,8 +202,8 @@ Page({
     let that = this
     const manage = wx.getBackgroundAudioManager()
     that.setData({
-      currentPosition: !!manage.currentTime?that.formatTime(Math.ceil(manage.currentTime)):'00:00',
-      duration: !!manage.duration?that.formatTime(Math.ceil(manage.duration)): '00:00',
+      currentPosition: !!manage.currentTime ? that.formatTime(Math.ceil(manage.currentTime)) : '00:00',
+      duration: !!manage.duration ? that.formatTime(Math.ceil(manage.duration)) : '00:00',
       sliderValue: Math.floor(manage.currentTime * 100 / manage.duration),
     })
   },
@@ -211,9 +211,9 @@ Page({
   /**
    * 定时器
    */
-  setTimer: function() {
+  setTimer: function () {
     let that = this
-    let timer = setInterval(function() {
+    let timer = setInterval(function () {
       that.setDuration()
     }, 1000)
     this.setData({
@@ -223,7 +223,7 @@ Page({
   /**
    * 格式化时间
    */
-  formatTime: function(s) {
+  formatTime: function (s) {
     let t = '';
     if (s > -1) {
       let min = Math.floor(s / 60) % 60;
@@ -240,18 +240,18 @@ Page({
     return t;
   },
   // 列表展开收缩
-  listTap: function() {
+  listTap: function () {
     this.setData({
       listVisible: true
     })
   },
   // 关闭歌曲列表
-  handleCancel: function() {
+  handleCancel: function () {
     this.setData({
       listVisible: false
     })
   },
-  choseChildrenSong: function(e) {
+  choseChildrenSong: function (e) {
     this.setData({
       audioIndex: e.currentTarget.id * 1
     })
@@ -261,13 +261,12 @@ Page({
     })
   },
   // 播放模式点击时间
-  bindTapType: function(e) {
-    if (e.currentTarget.dataset.type==='circle'){
+  bindTapType: function (e) {
+    if (e.currentTarget.dataset.type === 'circle') {
       this.setData({
-        type:''
+        type: ''
       })
-    }
-    else{
+    } else {
       this.setData({
         type: 'circle'
       })

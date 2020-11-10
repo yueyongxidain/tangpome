@@ -1,7 +1,9 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
+const {
+  $Toast
+} = require('../../commpent/iview-weapp/base/index');
 Page({
   data: {
     motto: 'Hello World',
@@ -10,35 +12,63 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   //事件处理函数
-  bindViewTap: function() {
+  bindViewTap: function () {
     wx.navigateTo({
       url: '../logs/logs'
     })
   },
   onLoad: function () {
+    if (app.globalData.loading) {
+      $Toast({
+        content: '加载中',
+        type: 'loading',
+        duration: 0
+      })
+    }
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
       })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
+    } else if (this.data.canIUse) {
       app.userInfoReadyCallback = res => {
         this.setData({
           userInfo: res.userInfo,
           hasUserInfo: true
         })
+        $Toast.hide()
+        app.globalData.loading = false
+        app.globalData.userInfo = res.userInfo
+        app.globalData.unAuthorized = false
+      }
+      app.userInfoFailCallback = res => {
+        this.setData({
+          userInfo: null,
+          hasUserInfo: false
+        })
+        $Toast.hide()
+        app.globalData.loading = false
+        app.globalData.userInfo = null
+        app.globalData.unAuthorized = true
       }
     } else {
       // 在没有 open-type=getUserInfo 版本的兼容处理
       wx.getUserInfo({
         success: res => {
+          app.globalData.loading = false
           app.globalData.userInfo = res.userInfo
+          app.globalData.unAuthorized = false
+          $Toast.hide()
           this.setData({
             userInfo: res.userInfo,
             hasUserInfo: true
           })
+        },
+        fail: res => {
+          $Toast.hide()
+          app.globalData.loading = false
+          app.globalData.userInfo = null
+          app.globalData.unAuthorized = true
         }
       })
     }
@@ -51,7 +81,7 @@ Page({
       })
     }
   },
-  getUserInfo: function(e) {
+  getUserInfo: function (e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
@@ -59,7 +89,7 @@ Page({
       hasUserInfo: true
     })
   },
-  tapTo:function(event){
+  tapTo: function (event) {
     console.log(event)
     wx.navigateTo({
       url: '../' + event.currentTarget.dataset.url + '/' + event.currentTarget.dataset.url

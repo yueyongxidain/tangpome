@@ -5,13 +5,6 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-
-    // 登录
-    wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-      }
-    })
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -21,14 +14,26 @@ App({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
-
-              // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-              // 所以此处加入 callback 以防止这种情况
+              this.globalData.unAuthorized = false
+              this.globalData.loading = false
               if (this.userInfoReadyCallback) {
                 this.userInfoReadyCallback(res)
               }
             }
           })
+        } else {
+          this.globalData.loading = false
+          this.globalData.unAuthorized = true
+          if (this.userInfoFailCallback) {
+            this.userInfoFailCallback(res)
+          }
+        }
+      },
+      fail: res => {
+        this.globalData.loading = false
+        this.globalData.unAuthorized = true
+        if (this.userInfoFailCallback) {
+          this.userInfoFailCallback(res)
         }
       }
     })
@@ -38,6 +43,8 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    unAuthorized: true,
+    loading: true
   },
 })

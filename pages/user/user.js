@@ -1,4 +1,5 @@
 // pages/user/user.js
+const { $Toast } = require('../../commpent/iview-weapp/base/index');
 const app = getApp()
 Page({
 
@@ -8,12 +9,20 @@ Page({
   data: {
     userInfo: {},
     hasUserInfo: false,
+    canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(app.globalData)
+    if(app.globalData.loading){
+      $Toast({
+        content: '加载中',
+        type: 'loading'
+    });
+    }
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
