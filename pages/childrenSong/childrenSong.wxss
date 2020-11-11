@@ -1,81 +1,30 @@
 /* pages/childrenSong/childrenSong.wxss */
 
-.container {
-  height: 100%;
-  overflow: hidden;
-}
-
-.bg {
-  position: absolute;
-  top: 0;
-  width: 100vw;
+.childrenSong {
   height: 100vh;
-  filter: blur(50rpx);
-}
-
-.bg-gray {
-  position: absolute;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  background-color: rgba(54, 43, 41, 0.1);
-}
-
-.rotate-disk-container {
-  position: absolute;
-  top: 0rpx;
-  height: 80%;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-
-.rotate-disk {
-  width: 600rpx;
-  height: 600rpx;
-  border-radius: 600rpx;
   overflow: hidden;
-  border: 20rpx solid rgba(54, 43, 41, 0.2);
+  padding: 0 40rpx;
 }
 
-.poster {
-  width: 600rpx;
-  height: 600rpx;
-}
-
-.rotate-360 {
-  animation: rotate 10s linear infinite;
-}
-
-.rotate-360-paused {
-  animation: rotate 10s linear infinite;
-  animation-play-state: paused;
-}
-
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  50% {
-    transform: rotate(180deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-.slider-container {
-  position: absolute;
-  bottom: 240rpx;
-  width: 100%;
+.head {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  height: 180rpx;
+}
+
+.left {
+  margin-right: 40rpx;
+}
+
+.right {
+  margin-left: 40rpx;
+}
+
+.cover {
+  display: inline-block;
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 12rpx;
 }
 
 .slider-time {
@@ -104,40 +53,6 @@
   align-items: center;
 }
 
-.operation-icon {
-}
-
-.icon-prev {
-  width: 80rpx;
-  height: 80rpx;
-}
-
-.icon-play {
-  margin: 0 40rpx;
-  width: 120rpx;
-  height: 120rpx;
-}
-
-.icon-pause {
-  margin: 0 40rpx;
-  width: 120rpx;
-  height: 120rpx;
-}
-
-.icon-next {
-  width: 80rpx;
-  height: 80rpx;
-}
-
-.icon-circle {
-  width: 80rpx;
-  height: 80rpx;
-}
-
-.icon-list {
-  width: 80rpx;
-  height: 80rpx;
-}
 
 .childrenSongName {
   position: absolute;
@@ -151,7 +66,6 @@
 }
 
 .list {
-  position: absolute;
   bottom: 0;
   height: 60%;
   width: 100%;

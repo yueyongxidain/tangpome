@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "i-action-sheet": "/commpent/iview-weapp/action-sheet/index"
+  }
+}

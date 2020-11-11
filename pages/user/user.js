@@ -1,5 +1,7 @@
 // pages/user/user.js
-const { $Toast } = require('../../commpent/iview-weapp/base/index');
+const {
+  $Toast
+} = require('../../commpent/iview-weapp/base/index');
 const app = getApp()
 Page({
 
@@ -16,31 +18,59 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(app.globalData)
-    if(app.globalData.loading){
+    if (app.globalData.loading) {
       $Toast({
         content: '加载中',
         type: 'loading'
-    });
+      });
     }
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
       })
+    } else if (this.data.canIUse) {
+      app.userInfoReadyCallback = res => {
+        this.setData({
+          userInfo: res.userInfo,
+          hasUserInfo: true
+        })
+        $Toast.hide()
+        app.globalData.loading = false
+        app.globalData.userInfo = res.userInfo
+        app.globalData.unAuthorized = false
+      }
+      app.userInfoFailCallback = res => {
+        this.setData({
+          userInfo: null,
+          hasUserInfo: false
+        })
+        $Toast.hide()
+        app.globalData.loading = false
+        app.globalData.userInfo = null
+        app.globalData.unAuthorized = true
+      }
     } else {
-      this.setData({
-        userInfo: {},
-        hasUserInfo: false
+      // 在没有 open-type=getUserInfo 版本的兼容处理
+      wx.getUserInfo({
+        success: res => {
+          app.globalData.loading = false
+          app.globalData.userInfo = res.userInfo
+          app.globalData.unAuthorized = false
+          $Toast.hide()
+          this.setData({
+            userInfo: res.userInfo,
+            hasUserInfo: true
+          })
+        },
+        fail: res => {
+          $Toast.hide()
+          app.globalData.loading = false
+          app.globalData.userInfo = null
+          app.globalData.unAuthorized = true
+        }
       })
     }
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
   },
 
   /**
@@ -63,13 +93,6 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
@@ -88,5 +111,14 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+  getUserInfo: function (e) {
+    if(e.detail.userInfo){
+      app.globalData.userInfo = !!e.detail.userInfo
+      this.setData({
+        userInfo: e.detail.userInfo,
+        hasUserInfo: true
+      })
+    }
+  },
 })

@@ -1,0 +1,42 @@
+<!--pages/childrenSong/childrenSong.wxml-->
+<view class="container">
+  <image class="bg" mode="scaleToFill" src="../../icon/song.png"></image>
+  <!--第二层层：灰色蒙层-->
+  <view class="bg-gray" bindtap="handleCancel">
+  </view>
+  <view class="rotate-disk-container " bindtap="handleCancel">
+    <view class="rotate-disk rotate-360">
+      <image class="poster" src="../../icon/song.png"></image>
+    </view>
+  </view>
+  <view class="childrenSongName">
+    <text>{{audioList[audioIndex].name}}</text>
+  </view>
+  <view class="slider-container">
+    <text class="slider-time">{{currentPosition === 0 ? '' : currentPosition}}</text>
+    <slider value="{{sliderValue}}" bindchange="bindSliderchange" activeColor="#13beec" style="width: 62%;margin: 0;" block-size="12" block-color="#13beec" />
+    <text class="slider-time">{{duration === 0 ? '' : duration}}</text>
+  </view>
+  <view class="operation-container">
+    <image src="{{type==='circle'?'../../icon/单曲循环.png':'../../icon/顺序播放.png'}}" data-type="{{type}}" class="icon-circle" bindtap="bindTapType"></image>
+    <image src="../../icon/prev.png" class="icon-prev" bindtap="bindTapPrev"></image>
+    <image src="{{pauseStatus === false ? '../../icon/pause.png' : '../../icon/play.png'}}" class="icon-play" bindtap="bindTapPlay">
+    </image>
+    <image src="../../icon/next.png" class="icon-next" bindtap="bindTapNext"></image>
+    <image src="../../icon/列表.png" class="icon-list" bindtap="listTap"></image>
+  </view>
+
+  <!--列表页-->
+  <scroll-view class="list" scroll-y style="display: {{listVisible === true ? '' : 'none'}}" scroll-top="{{audioIndex * 68}}">
+    <view wx:for="{{audioList}}" wx:key="{{index}}">
+      <view id="{{index}}" class="list-one {{index === audioIndex ? 'list-one-choose' : ''}}" bindtap="choseChildrenSong">
+        <view class="name">
+          <text class="list-index">{{index}}</text>
+        </view>
+        <view class="list-one-right">
+          <view class="name">{{item.name}}</view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
