@@ -14,11 +14,17 @@
       </view>
     </view>
   </view>
+  <view>
+    <view class="title">
+      专辑简介
+    </view>
+    <view class="desc">
+      欢乐的节奏，轻快的儿歌，跟着奇奇妙妙，边跳边唱真快乐。
+    </view>
+
+  </view>
   <!--列表部分-->
-  <view></view>
-  <!--列表页-->
-  <scroll-view class="list" scroll-y
-    scroll-top="{{audioIndex * 68}}">
+  <scroll-view class="list" scroll-y scroll-top="{{audioIndex * 68}}">
     <view wx:for="{{audioList}}" wx:key="{{index}}">
       <view id="{{index}}" class="list-one {{index === audioIndex ? 'list-one-choose' : ''}}"
         bindtap="choseChildrenSong">
